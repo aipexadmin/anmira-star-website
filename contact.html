@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/logo/logo.png">
+    <title>聯絡我們 | 星曜幻境</title>
+    <meta name="description" content="聯絡星曜幻境 — AI 影音製作與藝人經紀合作洽詢。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Noto Sans TC','Inter',sans-serif;background:#0a0a12;color:#e0e0f0;overflow-x:hidden}
+        a{text-decoration:none;color:inherit}
+        #starfield{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+        .aether{position:fixed;top:-40%;left:-20%;width:140%;height:140%;background:radial-gradient(ellipse at 20% 40%,rgba(180,60,255,.07) 0%,transparent 50%),radial-gradient(ellipse at 80% 60%,rgba(0,180,255,.05) 0%,transparent 50%),radial-gradient(ellipse at 50% 20%,rgba(255,100,200,.04) 0%,transparent 50%);z-index:1;pointer-events:none;animation:ad 25s ease-in-out infinite}
+        @keyframes ad{0%,100%{transform:translate(0,0)rotate(0deg)}25%{transform:translate(1.5%,-1%)rotate(.8deg)}50%{transform:translate(-.5%,1.5%)rotate(-.5deg)}75%{transform:translate(2%,.5%)rotate(.3deg)}}
+        @keyframes hg{0%,100%{background-position:0% 50%}25%{background-position:100% 50%}50%{background-position:200% 50%}75%{background-position:100% 50%}}
+         hg{0%,100%{background-position:0% 50%}25%{background-position:100% 50%}50%{background-position:200% 50%}75%{background-position:100% 50%}}
+
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(10,10,18,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04)}
+        .nav-logo{display:flex;align-items:center;gap:.7rem}
+        .nav-logo-img{width:58px;height:32px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(96,165,250,.45));animation:logoPulse 4.8s ease-in-out infinite}
+        @keyframes logoPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 7px rgba(96,165,250,.35))}50%{transform:scale(1.08);filter:drop-shadow(0 0 18px rgba(192,132,252,.7))}}
+        .nav-logo svg{width:32px;height:32px}
+        .nav-logo .bn{font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,#f0f0ff,#c084fc,#7b68ee,#60a5fa,#f472b6,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:400% 400%;animation:hg 10s ease-in-out infinite}
+        .nav-links{display:flex;gap:1.2rem;list-style:none}
+        .nav-links a{font-size:1rem;font-weight:600;letter-spacing:.02em;color:#d8d8f5;padding:.45rem .95rem;border-radius:30px;transition:all .3s}
+        .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(123,104,238,.12)}
+        .nav-links a.active{background:rgba(123,104,238,.15)}
+        .nav-right{display:flex;align-items:center;gap:1rem}
+        .nav-lang-btn{padding:.38rem .9rem;border:1px solid rgba(255,255,255,.12);border-radius:30px;font-size:.9rem;font-weight:600;color:#cfcff0;transition:all .3s}
+        .nav-lang-btn:hover{border-color:#7b68ee;color:#ffffff;background:rgba(123,104,238,.12)}
+        .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+        .hamburger span{width:24px;height:2px;background:#e0e0f0;border-radius:2px;transition:.3s}
+
+        .page-hero{z-index:2;padding:8rem 3rem 4rem;position:relative;text-align:center}
+        .page-hero .s-label{font-size:.9rem;letter-spacing:.2em;color:#7b68ee;margin-bottom:1rem;font-weight:500}
+        .page-hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;margin-bottom:1rem}
+        .gt{background:linear-gradient(135deg,#f0f0ff,#c084fc,#7b68ee,#60a5fa,#f472b6,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:300% 300%;animation:gs 8s ease-in-out infinite}
+        @keyframes gs{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+        .page-hero p{color:#c9cbe6;max-width:720px;margin:0 auto 2rem;line-height:1.9;font-weight:400;font-size:1.04rem}
+
+        section{z-index:2;padding:3rem;position:relative}
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:960px;margin:0 auto}
+        .contact-info p{color:#c9cbe6;line-height:2;margin-bottom:1.5rem;font-size:1rem}
+        .contact-detail{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+        .contact-detail .icon{width:40px;height:40px;border-radius:50%;background:rgba(123,104,238,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+        .contact-form input,.contact-form textarea{width:100%;padding:.9rem 1.1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;color:#e0e0f0;font-family:inherit;font-size:.95rem;margin-bottom:.9rem;transition:border .3s;resize:vertical}
+        .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:#c084fc}
+        .contact-form textarea{min-height:120px}
+        .btn{padding:.85rem 2.5rem;border-radius:60px;font-size:.95rem;font-weight:500;letter-spacing:.06em;transition:all .4s;border:none;cursor:pointer;font-family:inherit;display:inline-block}
+        .btn-primary{background:linear-gradient(135deg,#7b68ee,#c084fc,#f472b6);color:#fff;background-size:200% 200%;box-shadow:0 4px 30px rgba(123,104,238,.25);width:100%}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(123,104,238,.4);background-position:100% 100%}
+
+        footer{z-index:2;padding:2.5rem 3rem;border-top:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.75rem;color:#666;position:relative}
+        footer .fl{display:flex;gap:1.5rem}
+        footer .fl a:hover{color:#c084fc}
+
+        @media(max-width:900px){
+            nav{padding:.9rem 1.5rem}
+            .nav-links{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(10,10,18,.95);backdrop-filter:blur(20px);flex-direction:column;padding:2rem;gap:1rem;text-align:center}
+            .nav-links.open{display:flex}
+            .nav-links a{padding:.6rem}
+            .hamburger{display:flex}
+            .page-hero{padding:6rem 1.5rem 2rem}
+            section{padding:2rem 1.5rem}
+            .contact-grid{grid-template-columns:1fr;gap:2rem}
+            footer{flex-direction:column;text-align:center;padding:1.5rem}
+        }
+    </style>
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+    <div class="aether"></div>
+
+    <nav>
+        <div class="nav-logo">
+            <img class="nav-logo-img" src="assets/logo/logo.png" alt="Anmira Star logo">
+            <span class="bn">星曜幻境</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="vision.html">幻境成像</a></li>
+            <li><a href="stars.html">明日之星</a></li>
+            <li><a href="licensing.html">典藏授權</a></li>
+            <li><a href="contact.html" class="active">聯絡</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="en-contact.html" class="nav-lang-btn">EN</a>
+            <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="page-hero">
+        <div class="s-label">✦ 聯絡</div>
+        <h1 class="gt">聯絡我們</h1>
+        <p>對我們的服務感興趣？想要合作提案？或是想成為我們的簽約藝人？<br>歡迎與我們聯繫！</p>
+    </div>
+
+    <section>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-detail"><div class="icon">📧</div><div><strong>電子郵件</strong><br><a href="mailto:susan.wang@anmirastar.com" style="color:#d8d8f5;font-size:.98rem;font-weight:600">susan.wang@anmirastar.com</a></div></div>
+                <div class="contact-detail"><div class="icon">📍</div><div><strong>地址</strong><br><span style="color:#aaaacc;font-size:.95rem">臺北市松山區八德路4段123號5樓之2</span></div></div>
+                <div class="contact-detail"><div class="icon">🌐</div><div><strong>網站</strong><br><a href="https://anmirastar.com" target="_blank" rel="noopener" style="color:#d8d8f5;font-size:.95rem;font-weight:600">anmirastar.com</a></div></div>
+                <p style="margin-top:1.5rem">我們會在工作日 24 小時內回覆您的訊息。期待與您合作！</p>
+            </div>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('感謝您的訊息，我們會盡快與您聯繫！');">
+                <input type="text" placeholder="您的姓名" required>
+                <input type="email" placeholder="電子郵件" required>
+                <input type="text" placeholder="主旨">
+                <textarea placeholder="訊息內容" required></textarea>
+                <button type="submit" class="btn btn-primary">送出訊息</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div>© 2026 星曜幻境股份有限公司 Anmira Star Co., Ltd.</div>
+        <div class="fl"><a href="contact.html">聯絡我們</a></div>
+    </footer>
+
+    <script>
+        const c=document.getElementById('starfield'),x=c.getContext('2d');
+        let w,h,s=[];
+        function r(){w=c.width=innerWidth;h=c.height=innerHeight}
+        addEventListener('resize',r);r();
+        for(let i=350;i--;)s.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.2,a:Math.random()*.8+.2,sp:Math.random()*.15+.02,d:Math.random()*.3-.15,p:Math.random()*6.28,ps:Math.random()*.01+.005});
+        function dr(){x.clearRect(0,0,w,h);for(const o of s){o.p+=o.ps;let a=o.a*(.6+.4*Math.sin(o.p));x.beginPath();x.arc(o.x,o.y,o.r,0,7);x.fillStyle=`rgba(200,200,255,${a})`;x.fill();if(o.r>1){let g=x.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r*4);g.addColorStop(0,`rgba(200,200,255,${a*.15})`);g.addColorStop(1,'rgba(200,200,255,0)');x.beginPath();x.arc(o.x,o.y,o.r*4,0,7);x.fillStyle=g;x.fill()}}}
+        function an(){for(const o of s){o.x+=o.d;o.y+=o.sp;if(o.y>h+5){o.y=-5;o.x=Math.random()*w}if(o.x>w+5)o.x=-5;if(o.x<-5)o.x=w+5}dr();requestAnimationFrame(an)}
+        an();
+    </script>
+</body>
+</html>

@@ -1,138 +1,136 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANMIRA STAR | 星曜幻鏡 電子名片</title>
-    <style>
-        /* 承襲官網：科技深黑宇宙與極簡文字 */
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-            background-color: #000000; 
-            color: #ffffff; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0;
-            overflow: hidden;
-        }
-
-        /* 頂級毛玻璃質感卡片 (Glassmorphism) */
-        .box { 
-            text-align: center; 
-            background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 50px 30px; 
-            border-radius: 28px; 
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); 
-            max-width: 90%; 
-            width: 380px; 
-        }
-
-        /* 官網星曜光芒與品牌文字 */
-        .logo-text { 
-            color: #ffffff; 
-            font-weight: 300; 
-            font-size: 13px; 
-            letter-spacing: 4px; 
-            margin-bottom: 25px; 
-            text-transform: uppercase; 
-            opacity: 0.8;
-        }
-        
-        h2 { 
-            margin: 0 0 10px 0; 
-            color: #ffffff; 
-            font-size: 24px; 
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-        
-        p { 
-            color: #8e8e93; 
-            font-size: 13px; 
-            margin-bottom: 35px; 
-            line-height: 1.6; 
-            font-weight: 300;
-        }
-
-        /* 響應式主核心按鈕：純白與透明框格交織 */
-        .btn { 
-            display: block; 
-            background: #ffffff; 
-            color: #000000; 
-            text-decoration: none; 
-            padding: 15px; 
-            border-radius: 50px; 
-            font-weight: 600; 
-            margin-bottom: 15px; 
-            font-size: 15px; 
-            letter-spacing: 1px;
-            transition: all 0.3s ease; 
-        }
-        .btn:hover { 
-            background: #e5e5ea;
-            transform: translateY(-2px);
-        }
-        
-        /* 輔助按鈕：極簡鏤空邊框 */
-        .btn-sub { 
-            background: transparent; 
-            color: #ffffff; 
-            border: 1px solid rgba(255, 255, 255, 0.3); 
-        }
-        .btn-sub:hover { 
-            background: rgba(255, 255, 255, 0.08); 
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateY(-2px);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070c20">
+<title>ANMIRA STAR｜星曜幻鏡 電子名片</title>
+<style>
+:root{color-scheme:dark;--gold:#e6c889;--muted:#b8bdd1;--white:#f8f6f5}
+*{box-sizing:border-box}
+html{min-height:100%;background:#070c20}
+body{margin:0;min-height:100svh;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Segoe UI",sans-serif;color:var(--white);background:radial-gradient(ellipse at 16% 12%,#17356899,transparent 46%),radial-gradient(ellipse at 91% 65%,#54226c66,transparent 43%),linear-gradient(150deg,#030918,#0a1532 48%,#050611);display:grid;place-items:center;padding:32px 16px;overflow-x:hidden;position:relative}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.62;background-image:radial-gradient(1px 1px at 12% 20%,#fff 98%,transparent),radial-gradient(1px 1px at 76% 13%,#f8d993 98%,transparent),radial-gradient(2px 2px at 89% 54%,#fff 98%,transparent),radial-gradient(1px 1px at 34% 76%,#fff 98%,transparent),radial-gradient(1px 1px at 58% 42%,#e8d1a1 98%,transparent),radial-gradient(1px 1px at 18% 92%,#fff 98%,transparent);background-size:290px 310px}
+.orbit{position:fixed;width:76vw;height:76vw;max-width:730px;max-height:730px;border:1px solid #e2b9683b;border-radius:50%;pointer-events:none;transform:rotate(-25deg);filter:drop-shadow(0 0 9px #d9a65055)}
+.orbit.one{top:-51vw;left:-28vw}.orbit.two{bottom:-57vw;right:-25vw}
+.shell{width:min(100%,420px);position:relative;z-index:1;text-align:center}
+.brand{padding:12px 10px 24px}
+.brand img{width:clamp(126px,38vw,174px);height:auto;display:block;margin:0 auto 12px;filter:drop-shadow(0 0 18px #4162d044)}
+.brand-name{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;font-size:clamp(28px,8vw,38px);letter-spacing:.18em;padding-left:.18em;color:#f0d49a;text-shadow:0 1px 14px #c69a4540;font-weight:600}
+.brand-en{font-family:Georgia,serif;font-size:15px;letter-spacing:.32em;padding-left:.32em;color:#e8c888;margin-top:8px}
+.star-rule{display:flex;align-items:center;gap:12px;max-width:280px;margin:18px auto 12px;color:#e9c47a}.star-rule:before,.star-rule:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#cda95e)}.star-rule:after{transform:rotate(180deg)}
+.slogan{color:#d7d8e4;letter-spacing:.3em;font-size:12px;padding-left:.3em}.slogan-en{color:#bba476;font-family:Georgia,serif;font-size:9px;letter-spacing:.17em;margin-top:9px}
+.panel{background:linear-gradient(145deg,#ffffff13,#ffffff06);border:1px solid #e4c58c3b;border-radius:25px;padding:28px 24px 22px;box-shadow:0 18px 55px #0009,inset 0 1px #ffffff12;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.eyebrow{font-size:10px;color:#cdbb97;letter-spacing:.24em;margin-bottom:12px}
+h1{font-size:29px;letter-spacing:.09em;margin:0;font-weight:600} .english-name{font-family:Georgia,serif;font-size:19px;letter-spacing:.04em;margin:7px 0 12px}.role{font-size:13px;color:#c5c6d6;line-height:1.7;margin:0 0 18px}
+.rule{height:1px;background:linear-gradient(90deg,transparent,#c8a96688,transparent);margin-bottom:18px}
+a.action{display:flex;align-items:center;justify-content:center;gap:9px;min-height:49px;border-radius:999px;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.06em;transition:transform .2s,background .2s}a.action:hover{transform:translateY(-2px)}a.action[aria-disabled="true"]{opacity:.55;pointer-events:none}a.action:focus-visible{outline:3px solid white;outline-offset:3px}
+.primary{background:linear-gradient(120deg,#f5e5bc,#cba664);color:#1c1a22;margin-bottom:12px}.secondary{border:1px solid #c4b6c688;color:#fff;background:#ffffff08}
+.note{color:#a9adc1;font-size:11px;line-height:1.6;margin:15px 0 0}
+.footer{color:#9199b5;font-size:10px;letter-spacing:.12em;margin-top:24px}
+@media(max-width:360px){.panel{padding:23px 18px}.brand{padding-top:0}.brand-name{font-size:28px}}
+@media(prefers-reduced-motion:reduce){a.action{transition:none}}
+</style>
 </head>
 <body>
+<div class="orbit one" aria-hidden="true"></div><div class="orbit two" aria-hidden="true"></div>
+<main class="shell">
+  <header class="brand">
+    <img src="./assets/brand/logo-master.png" alt="星曜幻鏡藍紫銀星軌與金色星芒 Logo">
+    <div class="brand-name">星曜幻鏡</div>
+    <div class="brand-en">ANMIRA STAR</div>
+    <div class="star-rule" aria-hidden="true">✦</div>
+    <div class="slogan">創造・超越想像</div>
+    <div class="slogan-en">CREATING BEYOND IMAGINATION</div>
+  </header>
+  <section class="panel" aria-label="員工電子名片">
+    <div class="eyebrow">DIGITAL BUSINESS CARD</div>
+    <h1 id="name-zh">王佩瑜</h1>
+    <div class="english-name" id="name-en">Susan Wang</div>
+    <p class="role" id="role">業務總經理 · General Manager</p>
+    <div class="rule"></div>
+    <a class="action primary" id="vcf-link" href="#" aria-disabled="true">正在載入聯絡資料…</a>
+    <a class="action secondary" href="https://anmirastar.com/">↗ 進入官方網站</a>
+    <p class="note">您可以自由選擇是否儲存聯絡人，不會自動下載。</p>
+  </section>
+  <div class="footer">© ANMIRA STAR CO., LTD.</div>
+</main>
+<script>
+(async function () {
+  const params = new URLSearchParams(location.search);
+  const id = (params.get('name') || 'susan').trim().toLowerCase();
+  const nameZh = document.getElementById('name-zh');
+  const nameEn = document.getElementById('name-en');
+  const role = document.getElementById('role');
+  const link = document.getElementById('vcf-link');
 
-    <div class="box">
-        <div class="logo-text">ANMIRA STAR · 星曜幻鏡</div>
-        <h2 id="user-name">正在接入幻境...</h2>
-        <p>手機正在自動同步聯絡人資料。<br>點擊下方按鈕可手動儲存或訪問官網。</p>
-        
-        <!-- 操控鈕 -->
-        <a href="#" id="vcf-link" class="btn">📥 儲存聯絡資訊</a>
-        <a href="https://anmirastar.com/" class="btn btn-sub">🌐 進入官方網站</a>
-    </div>
+  function unavailable(message) {
+    nameZh.textContent = '無法取得電子名片';
+    nameEn.textContent = 'Contact unavailable';
+    role.textContent = message;
+    link.hidden = true;
+  }
 
-    <script>
-        // 1. 解析網址後綴 ?name= 參數
-        const urlParams = new URLSearchParams(window.location.search);
-        let name = urlParams.get('name') || 'susan';
-        name = name.toLowerCase();
-        
-        // 2. 依參數精準賦予對應人名
-        if (name === 'susan') {
-            document.getElementById('user-name').innerText = "王佩瑜 Susan Wang";
-        } else {
-            // 自動將首字母大寫，維持極簡美感
-            document.getElementById('user-name').innerText = name.toUpperCase() + " 的電子名片";
-        }
-        
-        // 3. 綁定動態 VCF 檔案連結
-        const vcfPath = `./files/${name}.vcf`;
-        document.getElementById('vcf-link').href = vcfPath;
+  // vCard 3.0 欄位的特殊字元跳脫；避免換行破壞格式。
+  function esc(value) {
+    return String(value ?? '').replace(/\\/g, '\\\\').replace(/\r?\n/g, '\\n')
+      .replace(/;/g, '\\;').replace(/,/g, '\\,');
+  }
+  function makeVCard(p) {
+    const full = [p.nameZh, p.nameEn].filter(Boolean).join(' ');
+    const lines = [
+      'BEGIN:VCARD', 'VERSION:3.0',
+      'N:' + [p.familyName || '', p.givenName || '', '', '', ''].map(esc).join(';'),
+      'FN:' + esc(full),
+      'ORG:' + esc(p.organization || '星曜幻鏡股份有限公司'),
+      'TITLE:' + esc(p.title || ''),
+      'TEL;TYPE=CELL:' + esc(p.phone || ''),
+      'EMAIL;TYPE=INTERNET:' + esc(p.email || '')
+    ];
+    // 每個地址單獨一筆 ADR；手機是否顯示據點名稱依系統而定。
+    for (const office of (p.offices || [])) {
+      if (!office.address) continue;
+      lines.push('ADR;TYPE=WORK:;;' + esc(office.address) + ';;;;');
+    }
+    if (p.website) lines.push('URL:' + esc(p.website));
+    const notes = [p.taxId ? '統編：' + p.taxId : '',
+      ...(p.offices || []).filter(o => o.address).map(o => o.label + '：' + o.address)]
+      .filter(Boolean).join('\n');
+    if (notes) lines.push('NOTE:' + esc(notes));
+    lines.push('END:VCARD');
+    return lines.join('\r\n') + '\r\n';
+  }
 
-        // 4. 一秒觸發原生下載機制
-        window.onload = function() {
-            setTimeout(() => {
-                const link = document.createElement('a');
-                link.href = vcfPath;
-                link.download = `${name}.vcf`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }, 450);
-        };
-    </script>
-
+  if (!/^[a-z0-9_-]+$/.test(id)) {
+    unavailable('網址中的員工代號格式不正確。');
+    return;
+  }
+  try {
+    const response = await fetch('./employees.json', { cache: 'no-cache' });
+    if (!response.ok) throw new Error('employees.json HTTP ' + response.status);
+    const employees = await response.json();
+    const p = employees[id];
+    if (!p || !p.nameZh || !p.nameEn) {
+      unavailable('找不到這位員工，請確認 QR Code 網址。');
+      return;
+    }
+    nameZh.textContent = p.nameZh;
+    nameEn.textContent = p.nameEn;
+    role.textContent = p.title || '';
+    document.title = p.nameZh + ' ' + p.nameEn + '｜星曜幻鏡電子名片';
+    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), makeVCard(p)],
+      { type: 'text/vcard;charset=utf-8' });
+    const blobUrl = URL.createObjectURL(blob);
+    link.href = blobUrl;
+    link.download = id + '.vcf';
+    link.removeAttribute('aria-disabled');
+    link.textContent = '↓ 儲存聯絡資訊';
+    window.addEventListener('pagehide', () => URL.revokeObjectURL(blobUrl), { once: true });
+  } catch (error) {
+    console.error('電子名片資料載入失敗:', error);
+    unavailable('員工資料暫時無法載入，請稍後再試。');
+  }
+})();
+</script>
 </body>
 </html>

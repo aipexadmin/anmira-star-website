@@ -118,14 +118,13 @@ a.action{display:flex;align-items:center;justify-content:center;gap:9px;min-heig
     nameEn.textContent = p.nameEn;
     role.textContent = p.title || '';
     document.title = p.nameZh + ' ' + p.nameEn + '｜星曜幻鏡電子名片';
-    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), makeVCard(p)],
-      { type: 'text/vcard;charset=utf-8' });
-    const blobUrl = URL.createObjectURL(blob);
-    link.href = blobUrl;
-    link.download = id + '.vcf';
+    // iPhone Safari 對 blob: VCF 連結可能出現 WebKitBlobResource 錯誤。
+    // 使用 GitHub Pages 上實際存在的 .vcf 靜態檔案，避免 blob: 下載。
+    link.href = './files/' + encodeURIComponent(id) + '.vcf';
+    link.removeAttribute('download');
     link.removeAttribute('aria-disabled');
     link.textContent = '↓ 儲存聯絡資訊';
-    window.addEventListener('pagehide', () => URL.revokeObjectURL(blobUrl), { once: true });
+
   } catch (error) {
     console.error('電子名片資料載入失敗:', error);
     unavailable('員工資料暫時無法載入，請稍後再試。');

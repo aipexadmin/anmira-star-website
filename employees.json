@@ -42,5 +42,49 @@
         "address": "台中市烏日區前竹里光明路勤農巷100號"
       }
     ]
+  },
+  "gavin": {
+    "nameZh": "宋沛暘",
+    "nameEn": "Gavin Sung",
+    "familyName": "宋",
+    "givenName": "沛暘",
+    "organization": "星曜幻鏡股份有限公司",
+    "title": "設計總監 Design Director",
+    "phone": "",
+    "email": "",
+    "website": "https://anmirastar.com",
+    "taxId": "62151404",
+    "offices": [
+      {
+        "label": "台北辦公室",
+        "address": "台北市松山區八德路四段123號5F-1"
+      },
+      {
+        "label": "台中辦公室",
+        "address": "台中市烏日區前竹里光明路勤農巷100號"
+      }
+    ]
+  },
+  "pan": {
+    "nameZh": "潘膺志",
+    "nameEn": "",
+    "familyName": "潘",
+    "givenName": "膺志",
+    "organization": "星曜幻鏡股份有限公司",
+    "title": "專案經理 Project Manager",
+    "phone": "",
+    "email": "",
+    "website": "https://anmirastar.com",
+    "taxId": "62151404",
+    "offices": [
+      {
+        "label": "台北辦公室",
+        "address": "台北市松山區八德路四段123號5F-1"
+      },
+      {
+        "label": "台中辦公室",
+        "address": "台中市烏日區前竹里光明路勤農巷100號"
+      }
+    ]
   }
 }

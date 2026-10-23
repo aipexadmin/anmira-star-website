@@ -20,5 +20,27 @@
         "address": "台中市烏日區前竹里光明路勤農巷100號"
       }
     ]
+  },
+  "sean": {
+    "nameZh": "宋盛灶",
+    "nameEn": "Sean Sung",
+    "familyName": "宋",
+    "givenName": "盛灶",
+    "organization": "星曜幻鏡股份有限公司",
+    "title": "董事長 Chairman",
+    "phone": "+886988213969",
+    "email": "sean.sung@anmirastar.com",
+    "website": "https://anmirastar.com",
+    "taxId": "62151404",
+    "offices": [
+      {
+        "label": "台北辦公室",
+        "address": "台北市松山區八德路四段123號5F-1"
+      },
+      {
+        "label": "台中辦公室",
+        "address": "台中市烏日區前竹里光明路勤農巷100號"
+      }
+    ]
   }
 }

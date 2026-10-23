@@ -45,9 +45,9 @@ a.action{display:flex;align-items:center;justify-content:center;gap:9px;min-heig
   </header>
   <section class="panel" aria-label="員工電子名片">
     <div class="eyebrow">DIGITAL BUSINESS CARD</div>
-    <h1 id="name-zh">王佩瑜</h1>
-    <div class="english-name" id="name-en">Susan Wang</div>
-    <p class="role" id="role">業務總經理 · General Manager</p>
+    <h1 id="name-zh">載入中…</h1>
+    <div class="english-name" id="name-en"></div>
+    <p class="role" id="role">正在讀取電子名片資料</p>
     <div class="rule"></div>
     <a class="action primary" id="vcf-link" href="#" aria-disabled="true">正在載入聯絡資料…</a>
     <a class="action secondary" href="https://anmirastar.com/">↗ 進入官方網站</a>
@@ -58,7 +58,7 @@ a.action{display:flex;align-items:center;justify-content:center;gap:9px;min-heig
 <script>
 (async function () {
   const params = new URLSearchParams(location.search);
-  const id = (params.get('name') || 'susan').trim().toLowerCase();
+  const id = (params.get('name') || '').trim().toLowerCase();
   const nameZh = document.getElementById('name-zh');
   const nameEn = document.getElementById('name-en');
   const role = document.getElementById('role');
@@ -71,34 +71,9 @@ a.action{display:flex;align-items:center;justify-content:center;gap:9px;min-heig
     link.hidden = true;
   }
 
-  // vCard 3.0 欄位的特殊字元跳脫；避免換行破壞格式。
-  function esc(value) {
-    return String(value ?? '').replace(/\\/g, '\\\\').replace(/\r?\n/g, '\\n')
-      .replace(/;/g, '\\;').replace(/,/g, '\\,');
-  }
-  function makeVCard(p) {
-    const full = [p.nameZh, p.nameEn].filter(Boolean).join(' ');
-    const lines = [
-      'BEGIN:VCARD', 'VERSION:3.0',
-      'N:' + [p.familyName || '', p.givenName || '', '', '', ''].map(esc).join(';'),
-      'FN:' + esc(full),
-      'ORG:' + esc(p.organization || '星曜幻鏡股份有限公司'),
-      'TITLE:' + esc(p.title || ''),
-      'TEL;TYPE=CELL:' + esc(p.phone || ''),
-      'EMAIL;TYPE=INTERNET:' + esc(p.email || '')
-    ];
-    // 每個地址單獨一筆 ADR；手機是否顯示據點名稱依系統而定。
-    for (const office of (p.offices || [])) {
-      if (!office.address) continue;
-      lines.push('ADR;TYPE=WORK:;;' + esc(office.address) + ';;;;');
-    }
-    if (p.website) lines.push('URL:' + esc(p.website));
-    const notes = [p.taxId ? '統編：' + p.taxId : '',
-      ...(p.offices || []).filter(o => o.address).map(o => o.label + '：' + o.address)]
-      .filter(Boolean).join('\n');
-    if (notes) lines.push('NOTE:' + esc(notes));
-    lines.push('END:VCARD');
-    return lines.join('\r\n') + '\r\n';
+  if (!id) {
+    unavailable('請使用員工專屬 QR Code 開啟電子名片。');
+    return;
   }
 
   if (!/^[a-z0-9_-]+$/.test(id)) {
@@ -117,7 +92,7 @@ a.action{display:flex;align-items:center;justify-content:center;gap:9px;min-heig
     nameZh.textContent = p.nameZh;
     nameEn.textContent = p.nameEn || '';
     role.textContent = p.title || '';
-    document.title = p.nameZh + ' ' + p.nameEn + '｜星曜幻鏡電子名片';
+    document.title = [p.nameZh, p.nameEn].filter(Boolean).join(' ') + '｜星曜幻鏡電子名片';
     // iPhone Safari 對 blob: VCF 連結可能出現 WebKitBlobResource 錯誤。
     // 使用 GitHub Pages 上實際存在的 .vcf 靜態檔案，避免 blob: 下載。
     link.href = './files/' + encodeURIComponent(id) + '.vcf';

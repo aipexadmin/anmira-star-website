@@ -110,12 +110,12 @@ a.action{display:flex;align-items:center;justify-content:center;gap:9px;min-heig
     if (!response.ok) throw new Error('employees.json HTTP ' + response.status);
     const employees = await response.json();
     const p = employees[id];
-    if (!p || !p.nameZh || !p.nameEn) {
+    if (!p || !p.nameZh) {
       unavailable('找不到這位員工，請確認 QR Code 網址。');
       return;
     }
     nameZh.textContent = p.nameZh;
-    nameEn.textContent = p.nameEn;
+    nameEn.textContent = p.nameEn || '';
     role.textContent = p.title || '';
     document.title = p.nameZh + ' ' + p.nameEn + '｜星曜幻鏡電子名片';
     // iPhone Safari 對 blob: VCF 連結可能出現 WebKitBlobResource 錯誤。
